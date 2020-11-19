@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--<link rel="stylesheet" type="text/css" href="static/style.css">-->
+    <meta charset="UTF-8">
+    <title>Менеджер</title>
+</head>
+<body>
+    <h1>Менеджер</h1>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <label>
+            <select name="Group">
+                {{ groups_list|safe }}
+            </select>
+        </label>
+        &nbsp;&nbsp;&nbsp;
+        <label>
+            <select name="ID">
+                {{ clients_list|safe }}
+            </select>
+        </label>
+        &nbsp;&nbsp;&nbsp;
+        <label>
+            <select name="ID_without_group">
+                {{ clients_without_group_list|safe }}
+            </select>
+        </label>
+        <br><br><br><br><br><br><br><br><br><br><br>
+
+        <p>
+            <input type="submit" name="choose_group" value="Выбрать группу">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="submit" name="choose_person" value="Выбрать клиента">
+        </p>
+
+        <p>
+            <label>
+                <textarea readonly disabled cols="38" rows="5">{{ info_text }}</textarea>
+            </label>
+        </p>
+
+        <p><input type="submit" name="extend_classes" value="Продлить абонемент"></p>
+
+
+        <label>
+            <input name="classes_number" type="radio" value="4_classes">
+            4 занятия
+        </label>
+        <label>
+            <input name="classes_number" type="radio" value="8_classes" checked>
+            8 занятий
+        </label>
+        <label>
+            <input name="classes_number" type="radio" value="16_classes">
+            16 занятий
+        </label>
+        <br><br>
+
+        <p><input type="submit" name="delete_client" value="Удалить клиента"></p>
+
+        <p>
+            <input type="submit" name="new_client" value="Добавить клиента">
+            <label>
+                <input type="text" size="20" name="fio" placeholder="FIO">
+            </label>
+            <label>
+                <input type="text" size="5" name="id" placeholder="ID">
+            </label>
+            <label>
+                <select name="new_group">
+                    {{ groups_list|safe }}
+                </select>
+            </label>
+        </p>
+
+        <p>
+            <input type="submit" name="create_new_group" value="Добавить группу">
+            <label>
+                <input type="text" size="20" name="new_group_title" placeholder="Название группы">
+            </label>
+        </p>
+
+        <p><input type="submit" name="delete_group" value="Удалить группу"></p>
+
+        <p>
+            <input type="submit" name="change_group" value="Изменить группу">
+            <label>
+                <select name="new_change_group">
+                    {{ groups_list|safe }}
+                </select>
+            </label>
+        </p>
+
+        <p>
+            <input type="submit" name="print_log" value="Записать лог">
+            <!--
+            <label>
+                <input type="text" size="40" name="folder" placeholder="Путь к логу" value="D:\Python projects\Django_test\log.txt">
+            </label>
+            -->
+        </p>
+
+        <h2><a href="/">Назад</a></h2>
+
+    </form>
+</body>
+</html>

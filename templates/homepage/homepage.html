@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--<link rel="stylesheet" type="text/css" href="static/style.css">-->
+    <meta charset="UTF-8">
+    <title>Абонементы</title>
+</head>
+<body>
+    <h1>Проверка электронных абонементов</h1>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <label>
+            <select name="Group">
+                {{ groups_list|safe }}
+            </select>
+        </label>
+
+        &nbsp;&nbsp;&nbsp;
+
+        <label>
+          <select name="ID">
+                {{ clients_list|safe }}
+            </select>
+        </label>
+        <br><br><br><br><br><br><br><br><br><br><br>
+
+        <p>
+            <input type="submit" name="choose_group" value="Выбрать группу">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="submit" name="choose_person" value="Выбрать клиента">
+        </p>
+
+        <p>
+            <label>
+                <textarea readonly disabled cols="38" rows="5">{{ info_text }}</textarea>
+            </label>
+        </p>
+
+        <p><label><input type="checkbox" name="all_here"/>Все пришли</label></p>
+
+        <p><input type="submit" name="class" value="Провести занятие"></p>
+
+        <p><input type="submit" name="stay_out" value="Отсутствует"></p>
+
+        <h2><a href="manager/">Менеджер клиентов и групп</a></h2>
+
+
+
+    </form>
+    <br>
+</body>
+</html>
